@@ -11,16 +11,7 @@
 <body>
     <h1>Hello Web Workers !</h1>
     <script>
-        let worker = new Worker('./worker.js');
-
-        let message = {
-            name: 'Zana',
-            age: 5
-        };
-
-        worker.postMessage(message);
-        worker.postMessage('This will not work');
-
+        let worker = new SharedWorker('./shared-worker.js');
     </script>
 </body>
 
