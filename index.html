@@ -12,6 +12,13 @@
     <h1>Hello Web Workers !</h1>
     <script>
         let worker = new SharedWorker('./shared-worker.js');
+
+        // worker.port.postMessage('hello');
+
+        worker.port.start();
+        worker.port.addEventListener('message', e => {
+            console.log('e.data :>> ', e.data);
+        })
     </script>
 </body>
 
