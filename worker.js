@@ -1,2 +1,3 @@
-importScripts('helper.js');
-console.log('this will print after helper loads.');
+this.addEventListener('message', function (event) {
+    console.log('event :>> ', event);
+})

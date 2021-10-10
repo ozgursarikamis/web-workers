@@ -19,7 +19,9 @@
         };
 
         worker.postMessage(message);
-        message.name = 'Halime';
+        worker.terminate(); // Aborts worker's associated global environment.    
+
+        worker.postMessage('This will not work');
 
     </script>
 </body>
