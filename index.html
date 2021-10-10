@@ -12,14 +12,15 @@
     <h1>Hello Web Workers !</h1>
     <script>
         let worker = new Worker('./worker.js');
-        worker.postMessage({
+
+        let message = {
             name: 'Zana',
-            age: 5,
-            func: function() {
-                console.log('Hello World');
-            }
-        });
-        worker.postMessage({ name: "Ozgur" });
+            age: 5
+        };
+
+        worker.postMessage(message);
+        message.name = 'Halime';
+
     </script>
 </body>
 
