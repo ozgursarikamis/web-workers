@@ -11,14 +11,21 @@
 <body>
     <h1>Hello Web Workers !</h1>
     <script>
-        let worker = new SharedWorker('./shared-worker.js');
+        let worker = new Worker('./worker.js');
 
-        // worker.port.postMessage('hello');
+        worker.addEventListener('message', e => {
+            console.log(e.data);
+        });
 
-        worker.port.start();
-        worker.port.addEventListener('message', e => {
-            console.log('e.data :>> ', e.data);
-        })
+        worker.postMessage({
+            type: 'add',
+            args: [1, 2]
+        });
+
+        worker.postMessage({
+            type: 'substract',
+            args: [10, 5]
+        });
     </script>
 </body>
 

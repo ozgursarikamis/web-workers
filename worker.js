@@ -1,4 +1,17 @@
-this.addEventListener('message', function (event) {
-    console.log('event :>> ', event);
-    this.close();
-}.bind(this));
+function add(l, r) {
+    this.postMessage(l + r);
+}
+
+function substract(l, r) {
+    this.postMessage(l - r);
+}
+
+this.addEventListener('message', e => {
+    switch (e.data.type) {
+        case 'add':
+            add.apply(this, e.data.args);
+            break;
+        case 'substract':
+            substract.apply(this, e.data.args);
+    }
+})
