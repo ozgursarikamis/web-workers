@@ -5,43 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <style type="text/css">
-            body {
-                padding-top: 28px;
-            }
-        
-            .output-cont {
-                margin-left: 12%;
-                margin-top: 28px;
-            }
-        
-            .output-cont h3 {
-                width: 200px;
-                height: 100%;
-            }
-        
-            .output-cont button {
-                padding: 4px 8px;
-                font-size: 1.1rem;
-                font-family: sans-serif;
-            }
-        </style>
-
     <title>JS Web Workers</title>
+    <style>
+        section {
+            padding: 0.5rem 0 0.5rem 0;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Hello Web Workers !</h1><div class="output-cont"><button onclick="testWorker()">start worker</button>
-        <h3 id="workerOutput"></h3><button onclick="terminateWorker()">terminate worker</button>
-    </div>
-    <br />
-    <div class="output-cont"><button onclick="testMainThread()">start blocking thread</button>
-        <h3 id="mainThreadOutput"></h3>
-    </div>
-    <br />
-    <div class="output-cont"><button onclick="alert('browser responsive!')">test browser responsiveness</button></div>
-    
+    <section>
+        <h1>Hello Web Workers !</h1>
+    </section>
+    <section>
+        <button onclick="sayHI()">Hi</button>
+        <button onclick="stop()">stop</button>
+    </section>
+    <section>
+        <div id="result"></div>
+    </section>
     <script src="./main.js"></script>
 </body>
 

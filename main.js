@@ -1,22 +1,19 @@
-let worker;
 
-function testWorker() {
-    if (typeof(Worker)) {
-        worker = new Worker('./worker.js');
-    }
+var worker = new Worker('worker.js');
 
-    worker.onmessage = function (event) {
-        document.getElementById('workerOutput').innerHTML = event.data;
-    }
+worker.addEventListener('message', function (e) {
+    document.getElementById('result').textContent = e.data;
+}, false);
+
+function sayHI() {
+    worker.postMessage({ 'cmd': 'start', 'msg': 'Hi' });
 }
 
-function terminateWorker() {
-    worker.terminate();
-    worker = undefined;
+function stop() {
+    // worker.terminate() from this script would also stop the worker.
+    worker.postMessage({ 'cmd': 'stop', 'msg': 'Bye' });
 }
 
-function testMainThread() {
-    for (let i = 0; i < 2000000; i++) {
-        document.getElementById('mainThreadOutput').innerHTML = "Main Thread: " + i;
-    }
+function unknownCmd() {
+    worker.postMessage({ 'cmd': 'foobard', 'msg': '???' });
 }
