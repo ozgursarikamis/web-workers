@@ -1,17 +1,5 @@
-function add(l, r) {
-    this.postMessage(l + r);
+i = 0;
+while (i < 200000) {
+    postMessage("Web Worker Counter: " + i);
+    i++;
 }
-
-function substract(l, r) {
-    this.postMessage(l - r);
-}
-
-this.addEventListener('message', e => {
-    switch (e.data.type) {
-        case 'add':
-            add.apply(this, e.data.args);
-            break;
-        case 'substract':
-            substract.apply(this, e.data.args);
-    }
-})
